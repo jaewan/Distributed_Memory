@@ -1,4 +1,2 @@
 # Distributed_Memory
-Repo of Distributed Memory Management.
-
-Please make a branch of your own
+In an age where in-memory distributed computing is widespread, optimizing memory usage have the potential to save computational resources. 
