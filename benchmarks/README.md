@@ -1,6 +1,6 @@
 # Running Benchmarks:
 - [ ] Ray object store capacity and performance changes
-- [ ] [HiBench on Spark with and without disk usage] (#instructions-for-running-spark-bench)
+- [ ] [HiBench on Spark with and without disk usage](#instructions-for-running-spark-bench)
 - [ ] Peak memory usage prediction viabilities
 
 ## Instructions for Running Spark Bench
