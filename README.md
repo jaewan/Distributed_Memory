@@ -2,7 +2,7 @@
 In an age where in-memory distributed computing is widespread, optimizing memory usage have the potential to save computational resources. 
 
 ## Getting Started
-Fork and clone the repo to the local machine by running the following command:
+Fork and then clone the repo to the local machine by running the following command:
 ```
 git clone https://github.com/{GITHUB_USERNAME}/Distributed_Memory.git
 ```
