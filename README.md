@@ -11,4 +11,5 @@ git clone https://github.com/{GITHUB_USERNAME}/Distributed_Memory.git
 - [ ] Ray object store capacity and performance changes.
 - [ ] Running HiBench on Spark: analysis of disk spillage and throughput.
 - [ ] Peak memory usage prediction viabilities on Ray.
+
 ** For more details, read `README` in the benchmarks folder. 
