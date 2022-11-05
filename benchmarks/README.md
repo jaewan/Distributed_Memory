@@ -11,6 +11,6 @@ We wanted to assess whether pursuing remote memory would actually be beneficial 
 ## Instructions for Running Spark Bench
 
 ### Our Configurations
-For preliminary testing of the viability of remote memory, we ran SparkBench (HiBench) on a single node (local computer: M1 Macbook Pro 2020). Instructions for running SparkBench is as follows.
+For preliminary testing of the viability of remote memory, we ran SparkBench (HiBench) on a single node. To setup SparkBench, run `setup.sh` to download/build sparkbench with our configurations. To run HiBench, run `run.sh` in the terminal to execute. 
 
 ## Instructions for Peak Memory Prediction Evaluation
