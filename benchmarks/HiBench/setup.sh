@@ -48,6 +48,15 @@ then
     pushd /usr/local/bin > /dev/null 2>&1
     echo export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::") \
     | tee -a hadoop/etc/hadoop/hadoop-env.sh > /dev/null 2>&1
+
+    # add environment paths
+    echo export HADOOP_HOME=/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_CONF_DIR=/usr/local/bin/hadoop/etc/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_MAPRED_HOME=/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_COMMON_HOME=/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_HDFS_HOME=/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export YARN_HOME=/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export PATH=$PATH:/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
 fi
 
 if [ ! -d "spark" ]
@@ -60,7 +69,6 @@ then
     sudo mv spark-3.0.0-bin-hadoop3.2 /usr/local/bin/spark
     echo export SPARK_HOME=/usr/local/bin/spark | tee -a ~/.bashrc > /dev/null 2>&1
     echo export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin | tee -a ~/.bashrc > /dev/null 2>&1
-    source ~/.bashrc
 else
     popd > /dev/null 2>&1
 fi
@@ -70,3 +78,4 @@ echo -e "building SparkBench..."
 pushd ../../../HiBench > /dev/null 2>&1
 mvn -Psparkbench -Dspark=3.0 -Dscala=2.12 clean package
 popd > /dev/null 2>&1
+source ~/.bashrc

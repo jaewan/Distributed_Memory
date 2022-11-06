@@ -10,9 +10,9 @@ cp configs/spark1.conf ../../../HiBench/conf/spark.conf
 
 
 # save results to separate destination --> /results/m
-#current_dir=$PWD; cd ../../..
-#mv HiBench/report Distributed_Memory/results/m
-#cd $current_dir
+pushd ../../.. > /dev/null 2>&1
+mv HiBench/report Distributed_Memory/results/m
+popd > /dev/null 2>&1
 
 # run sparkbench with pure disk option.
 #cp configs/spark2.conf ../../../HiBench/conf/spark.conf
