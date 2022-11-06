@@ -3,7 +3,7 @@ cp configs/hadoop.conf ../../../HiBench/conf/hadoop.conf
 
 # start hadoop, spark, and yarn instance.
 
-/usr/local/bin/spark/sbin/start-master.sh
+/usr/local/spark/sbin/start-master.sh
 
 # run sparkbench with pure memory option.
 cp configs/spark1.conf ../../../HiBench/conf/spark.conf
@@ -23,4 +23,4 @@ popd > /dev/null 2>&1
 #mv HiBench/report Distributed_Memory/results/d
 #cd $current_dir
 
-/usr/local/bin/spark/sbin/stop-master.sh
+/usr/local/spark/sbin/stop-master.sh

@@ -34,7 +34,7 @@ popd > /dev/null 2>&1
 # download hadoop and spark.
 echo -e "checking for spark and hadoop..."
 
-pushd /usr/local/bin > /dev/null 2>&1
+pushd /usr/local > /dev/null 2>&1
 if [ ! -d "hadoop" ]
 then
     popd > /dev/null 2>&1
@@ -45,18 +45,19 @@ then
     sudo mv hadoop-3.2.4 /usr/local/bin/hadoop
 
     # add java path
-    pushd /usr/local/bin > /dev/null 2>&1
+    pushd /usr/local > /dev/null 2>&1
     echo export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::") \
     | tee -a hadoop/etc/hadoop/hadoop-env.sh > /dev/null 2>&1
 
     # add environment paths
-    echo export HADOOP_HOME=/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
-    echo export HADOOP_CONF_DIR=/usr/local/bin/hadoop/etc/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
-    echo export HADOOP_MAPRED_HOME=/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
-    echo export HADOOP_COMMON_HOME=/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
-    echo export HADOOP_HDFS_HOME=/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
-    echo export YARN_HOME=/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
-    echo export PATH=$PATH:/usr/local/bin/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_PREFIX=/usr/local/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_HOME=$HADOOP_PREFIX | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_COMMON_HOME=$HADOOP_PREFIX | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_CONF_DIR=$HADOOP_PREFIX/etc/hadoop | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_HDFS_HOME=$HADOOP_PREFIX | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_MAPRED_HOME=$HADOOP_PREFIX | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export HADOOP_YARN_HOME=$HADOOP_PREFIX | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export PATH=$PATH:$HADOOP_PREFIX/bin | tee -a ~/.bashrc > /dev/null 2>&1
 fi
 
 if [ ! -d "spark" ]
@@ -67,7 +68,7 @@ then
     fi
     tar -xvzf spark-3.0.0-bin-hadoop3.2.tgz
     sudo mv spark-3.0.0-bin-hadoop3.2 /usr/local/bin/spark
-    echo export SPARK_HOME=/usr/local/bin/spark | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export SPARK_HOME=/usr/local/spark | tee -a ~/.bashrc > /dev/null 2>&1
     echo export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin | tee -a ~/.bashrc > /dev/null 2>&1
 else
     popd > /dev/null 2>&1
