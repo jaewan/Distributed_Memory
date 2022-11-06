@@ -8,9 +8,8 @@ We wanted to assess whether pursuing remote memory would actually be beneficial 
 
 ## Instructions for Ray Object Store Capacity Manipulation
 
-## Instructions for Running Spark Bench
-
-### Our Configurations
-For preliminary testing of the viability of remote memory, we ran SparkBench (HiBench) on a single node. 
+## Spark Bench
+### Running spark bench with our configurations
+For preliminary testing of the viability of remote memory, we ran SparkBench (HiBench) on a single node. We ran on an Amazon AWS EC2 instance. To replicate our setup, run `setup.sh`. Note that this will install Spark and Hadoop (with specific versions) in `/usr/local` as well as downloading the HiBench repo into the parent folder. After setting up using the setup script, run `run.sh` to get data within the `results` folder that will automatically be generated. To delete all external downloads after testing, run `clean.sh`.
 
 ## Instructions for Peak Memory Prediction Evaluation
