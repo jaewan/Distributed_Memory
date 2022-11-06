@@ -32,29 +32,38 @@ popd > /dev/null 2>&1
 ##### REDO TO REMOVE UNNECESSARY FILES FOR FINAL REPACKAGE
 
 # download hadoop and spark.
-pushd ../../.. > /dev/null 2>&1
 echo -e "checking for spark and hadoop..."
 
+pushd /usr/local/bin > /dev/null 2>&1
 if [ ! -d "hadoop" ]
 then
-    wget https://dlcdn.apache.org/hadoop/common/hadoop-3.2.4/hadoop-3.2.4.tar.gz
+    popd > /dev/null 2>&1
+    if [ ! -f "hadoop-3.2.4.tar.gz" ]; then
+        wget https://dlcdn.apache.org/hadoop/common/hadoop-3.2.4/hadoop-3.2.4.tar.gz
+    fi
     tar -xzvf hadoop-3.2.4.tar.gz
-    mv hadoop-3.2.4 hadoop
+    sudo mv hadoop-3.2.4 /usr/local/bin/hadoop
 
     # add java path
-    current_dir=$PWD; cd ../../../hadoop
+    pushd /usr/local/bin > /dev/null 2>&1
     echo export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::") \
-    | tee -a etc/hadoop/hadoop-env.sh > /dev/null 2>&1
-    cd $current_dir
+    | tee -a hadoop/etc/hadoop/hadoop-env.sh > /dev/null 2>&1
 fi
 
 if [ ! -d "spark" ]
 then
-    wget https://archive.apache.org/dist/spark/spark-3.0.0/spark-3.0.0-bin-hadoop3.2.tgz
+    popd > /dev/null 2>&1
+    if [ ! -f "spark-3.0.0-bin-hadoop3.2.tgz" ]; then  
+        wget https://archive.apache.org/dist/spark/spark-3.0.0/spark-3.0.0-bin-hadoop3.2.tgz
+    fi
     tar -xvzf spark-3.0.0-bin-hadoop3.2.tgz
-    mv spark-3.0.0-bin-hadoop3.2 spark
+    sudo mv spark-3.0.0-bin-hadoop3.2 /usr/local/bin/spark
+    echo export SPARK_HOME=/usr/local/bin/spark | tee -a ~/.bashrc > /dev/null 2>&1
+    echo export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin | tee -a ~/.bashrc > /dev/null 2>&1
+    source ~/.bashrc
+else
+    popd > /dev/null 2>&1
 fi
-popd > /dev/null 2>&1
 
 # build SparkBench.
 echo -e "building SparkBench..."

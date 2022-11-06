@@ -11,6 +11,6 @@ We wanted to assess whether pursuing remote memory would actually be beneficial 
 ## Instructions for Running Spark Bench
 
 ### Our Configurations
-For preliminary testing of the viability of remote memory, we ran SparkBench (HiBench) on a single node. To setup SparkBench, run `setup.sh` to download/build sparkbench with our configurations. To run HiBench, run `run.sh` in the terminal to execute. 
+For preliminary testing of the viability of remote memory, we ran SparkBench (HiBench) on a single node. 
 
 ## Instructions for Peak Memory Prediction Evaluation
