@@ -42,7 +42,7 @@ then
         wget https://dlcdn.apache.org/hadoop/common/hadoop-3.2.4/hadoop-3.2.4.tar.gz
     fi
     tar -xzvf hadoop-3.2.4.tar.gz
-    sudo mv hadoop-3.2.4 /usr/local/bin/hadoop
+    sudo mv hadoop-3.2.4 /usr/local/hadoop
 
     # add java path
     pushd /usr/local > /dev/null 2>&1
@@ -67,9 +67,8 @@ then
         wget https://archive.apache.org/dist/spark/spark-3.0.0/spark-3.0.0-bin-hadoop3.2.tgz
     fi
     tar -xvzf spark-3.0.0-bin-hadoop3.2.tgz
-    sudo mv spark-3.0.0-bin-hadoop3.2 /usr/local/bin/spark
+    sudo mv spark-3.0.0-bin-hadoop3.2 /usr/local/spark
     echo export SPARK_HOME=/usr/local/spark | tee -a ~/.bashrc > /dev/null 2>&1
-    echo export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin | tee -a ~/.bashrc > /dev/null 2>&1
 else
     popd > /dev/null 2>&1
 fi
