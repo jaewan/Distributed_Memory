@@ -2,7 +2,7 @@
 cp configs/hadoop.conf ../../../HiBench/conf/hadoop.conf
 
 # start hadoop, spark, and yarn instance.
-
+/usr/local/hadoop/sbin/start-all.sh
 /usr/local/spark/sbin/start-master.sh
 /usr/local/spark/sbin/start-slave.sh spark://172.31.12.13:7077
 
