@@ -32,7 +32,6 @@ for row in csv_reader0:
     first_data.append(row)
 temp_x = []
 temp_y = []
-print(f'first: {first_data}')
 for i in range(len(first_data)):
     temp_x.append(int(float(first_data[i][0]))) # maybe not necessary bc x value is constant, but just in case I did the object memory store wrong
     temp_y.append(int(float(first_data[i][1])))
@@ -42,8 +41,6 @@ range_error.append(max(temp_y) - min(temp_y)) # appending range error
 x.append(average)
 average = sum(temp_y) / len(temp_y)
 y.append(average)
-print(x)
-print(y)
 f.close()
 
 f1 = open(f_path1.name, 'r')
@@ -55,8 +52,6 @@ for row in csv_reader1:
     second_data.append(row) #error here 
 temp_x = []
 temp_y = []
-print(f'second: {second_data}')
-print(temp_x)
 for i in range(len(second_data)):
     temp_x.append(int(float(second_data[i][0])))
     temp_y.append(int(float(second_data[i][1])))
@@ -66,9 +61,6 @@ range_error.append(max(temp_y) - min(temp_y)) # appending range error
 x.append(average)
 average = sum(temp_y) / len(temp_y)
 y.append(average)
-print(f'average = {average}')
-print(x)
-print(y)
 f1.close()
 
 f2 = open(f_path2.name, 'r')
@@ -134,17 +126,11 @@ average = sum(temp_y) / len(temp_y)
 y.append(average)
 f4.close()
 
-print(x)
-print(y)
-print(int(x[0]))
-
-#print(x_data)
 #print(x_data[0][0]) -> this is how to access elements
 
 # error bars (max - min) - refer to range_error
 
 # error bars (SD) - refer to SD_error
-print(SD_error)
 convert = 1000000000
 labels = []
 for i in range(len(x)):

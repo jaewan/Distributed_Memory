@@ -5,27 +5,27 @@ PARTITION=(5 5 5 5 5)
 SIZES=(400e6 400e6 400e6 400e6 400e6)
 MEMORY=(25e7 5e8 1e9 2e9 4e9)
 
-for i in {0..4}
-do
-    RESULT_PATH=$RESULT_FILE$i.csv
-    RAY_ENABLE_MAC_LARGE_OBJECT_STORE=1 python shuffle.py  --file $RESULT_PATH --num-partitions ${PARTITION[i]} --partition-size ${SIZES[i]} --object-store-memory ${MEMORY[i]} 
-done
-
-
 #for i in {0..4}
 #do
 #    RESULT_PATH=$RESULT_FILE$i.csv
-#    echo 'object_store_memory,delta' >> $RESULT_PATH
+#    RAY_ENABLE_MAC_LARGE_OBJECT_STORE=1 python shuffle.py  --file $RESULT_PATH --num-partitions ${PARTITION[i]} --partition-size ${SIZES[i]} --object-store-memory ${MEMORY[i]} 
 #done
 
-#for j in {0..9}
-#do
-#    for i in {0..4}
-#    do
-#        RESULT_PATH=$RESULT_FILE$i.csv
-#        RAY_ENABLE_MAC_LARGE_OBJECT_STORE=1 python shuffle.py  --file $RESULT_PATH --num-partitions ${PARTITION[i]} --partition-size ${SIZES[i]} --object-store-memory ${MEMORY[i]} 
-#    done
-#done
+
+for i in {0..4}
+do
+    RESULT_PATH=$RESULT_FILE$i.csv
+    echo 'object_store_memory,delta' >> $RESULT_PATH
+done
+
+for j in {0..9}
+do
+    for i in {0..4}
+    do
+        RESULT_PATH=$RESULT_FILE$i.csv
+        RAY_ENABLE_MAC_LARGE_OBJECT_STORE=1 python shuffle.py  --file $RESULT_PATH --num-partitions ${PARTITION[i]} --partition-size ${SIZES[i]} --object-store-memory ${MEMORY[i]} 
+    done
+done
 
 declare -i a=0
 RESULT_PATH0=$RESULT_FILE$a.csv
