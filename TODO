@@ -1,0 +1,9 @@
+1. Run with working set ratio (working set / memory capacity)
+	1.1 Memory cap is fixed to 8GB
+	Read shuffle.py to see how to vary working set size
+	Sanity check (Tell me how you checked)
+
+2. Increase #trials to 10
+	2.1 Record runtime - done (stored all values properly)
+3. Plot
+	3.1 Plot Average, Error bar (as a form of error bar)
