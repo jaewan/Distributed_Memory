@@ -1,0 +1,7 @@
+.DS_Store
+/HiBench
+/.vscode
+/results
+
+hadoop-3.2.4.tar.gz
+spark-3.0.0-bin-hadoop3.2.tgz
